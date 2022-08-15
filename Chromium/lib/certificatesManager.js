@@ -23,6 +23,7 @@ CMH.certificatesManager.getCertUrl = async (urlTested, httpHeadMethod=false) => 
     const securityInfo = await browser.webRequest.getSecurityInfo(details.requestId, { certificateChain: true })
     if (securityInfo.state === 'secure' || securityInfo.state === 'weak') {
       cert = CMH.certificatesManager.formatCertificate(securityInfo.certificates)
+      console.log(cert);
     }
   }
   browser.webRequest.onHeadersReceived.addListener(listener,
